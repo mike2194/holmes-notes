@@ -4,10 +4,12 @@
 > HolmesGPT - The Open Source On-Call/DevOps Agent
 
 ## running Holmes to ask a question
-* the following is a script to be called like `./holmes.ask "what pods are not running in monitoring namespace"`
+* the following is a script to be placed in user's PATH, i.e.: `~/.local/bin/holmes`
+* USAGE: `holmes ask "what pods are not running in monitoring namespace"`
 ```sh
 OLLAMA_API_URL="http://ai-box.lan:11434"
 HOLMES_MODEL="qwen2:7b"
+_holmes_cmd="$1" ; shift
 
 docker run -it --rm --net=host \
   -v ~/.holmes:/root/.holmes \
@@ -15,7 +17,7 @@ docker run -it --rm --net=host \
   -e OPENAI_API_BASE="${OLLAMA_API_URL}/v1" \
   -e OPENAI_API_KEY="ollama" \
   -e MODEL="${HOLMES_MODEL}" \
-  localhost/holmes:latest ask "$@"
+  localhost/holmes:latest $_holmes_cmd "$@"
 ```
 
 * this should produce an output like:
