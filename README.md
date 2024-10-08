@@ -1,5 +1,8 @@
 # holmes-notes
 
+## wtf is [holmesgpt](https://github.com/robusta-dev/holmesgpt) ?
+> HolmesGPT - The Open Source On-Call/DevOps Agent
+
 ## running Holmes to ask a question
 * the following is a script to be called like `./holmes.ask "what pods are not running in monitoring namespace"`
 ```sh
